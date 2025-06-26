@@ -72,7 +72,7 @@ $(document).ready(function(){
     arrows: false,
     dots: false,
     autoplay: true,
-    autoplaySpeed: 200,
+    autoplaySpeed: 500,
     infinite: true,
     responsive: [
       { breakpoint: 1200, settings: { slidesToShow: 4 } },
@@ -83,33 +83,8 @@ $(document).ready(function(){
   });
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  var portfolioModal = document.getElementById('portfolioModal');
-  var modalTitle = document.getElementById('portfolioModalTitle');
-  var modalImg = document.getElementById('portfolioModalImg');
-  var modalDesc = document.getElementById('portfolioModalDesc');
 
-  document.querySelectorAll('.portfolio-box').forEach(function (box) {
-    box.addEventListener('click', function () {
-      modalTitle.textContent = box.getAttribute('data-title');
-      modalImg.src = box.getAttribute('data-img');
-      modalImg.alt = box.getAttribute('data-title');
-      modalDesc.innerText = box.getAttribute('data-desc');
-      console.log(box.getAttribute('data-desc'));
-    });
-  });
-});
 
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.portfolio-box').forEach(function (box) {
-    box.addEventListener('click', function () {
-      document.getElementById('portfolioModalTitle').textContent = box.getAttribute('data-title');
-      document.getElementById('portfolioModalImg').src = box.getAttribute('data-img');
-      document.getElementById('portfolioModalImg').alt = box.getAttribute('data-title');
-      document.getElementById('portfolioModalDesc').innerHTML = box.getAttribute('data-desc');
-    });
-  });
-});
 
 });
 
@@ -118,4 +93,100 @@ function toggleCardText(btn) {
     card.querySelector('.short-text').classList.toggle('d-none');
     card.querySelector('.long-text').classList.toggle('d-none');
     btn.textContent = btn.textContent === 'See More' ? 'See Less' : 'See More';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Listen for clicks on portfolio boxes
+  document.querySelectorAll('.portfolio-box').forEach(function(box) {
+    box.addEventListener('click', function() {
+      // Get data attributes
+      const title = box.getAttribute('data-title');
+      const img = box.getAttribute('data-img');
+      const desc = box.getAttribute('data-desc');
+      // Set modal content
+      document.getElementById('portfolioModalTitle').textContent = title || '';
+      document.getElementById('portfolioModalImg').src = img || '';
+      document.getElementById('portfolioModalDesc').textContent = desc || '';
+    });
+  });
+});
+
+// Function to fetch and display "Did You Know?" facts
+const facts = [
+  { icon: "🌍", color: "text-primary", text: "Did you know? Every volunteer hour helps empower African youth to reach their dreams." },
+  { icon: "💧", color: "text-info", text: "Did you know? Access to clean water can double school attendance in rural communities." },
+  { icon: "📚", color: "text-success", text: "Did you know? Education is the most powerful tool to break the cycle of poverty." },
+  { icon: "🤝", color: "text-warning", text: "Did you know? Community-led projects create lasting change for generations." },
+  { icon: "🌱", color: "text-danger", text: "Did you know? Youth empowerment programs inspire future leaders across Africa." },
+  { icon: "🚰", color: "text-primary", text: "Did you know? One well can provide clean water for an entire village." },
+  { icon: "🎓", color: "text-info", text: "Did you know? Volunteers help thousands of children stay in school every year." },
+  { icon: "🌟", color: "text-success", text: "Did you know? Small acts of kindness can transform entire communities." },
+  { icon: "👧🏾", color: "text-warning", text: "Did you know? Educating girls leads to healthier, more prosperous societies." },
+  { icon: "🙌", color: "text-danger", text: "Did you know? Your support creates hope and opportunity for African children." }
+];
+
+// Shuffle and pick 3 random facts
+function getRandomFacts(arr, n) {
+  let shuffled = arr.slice().sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, n);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const selectedFacts = getRandomFacts(facts, 3);
+  const container = document.getElementById('didYouKnowFacts');
+  container.innerHTML = selectedFacts.map(fact => `
+    <div class="col">
+      <div class="card h-100 shadow-sm border-0">
+        <div class="card-body">
+          <div class="fs-2 mb-2 ${fact.color}">${fact.icon}</div>
+          <p class="card-text">${fact.text}</p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+});
+
+// Function to handle the donation modal
+function setAmount(amount) {
+  document.getElementById('customAmount').value = amount;
+}
+
+function handleDonate(e) {
+  e.preventDefault();
+  const amount = document.getElementById('customAmount').value;
+  const name = document.getElementById('donorName').value.trim();
+  const email = document.getElementById('donorEmail').value.trim();
+  const purpose = document.getElementById('donationPurpose').value;
+  const errorDiv = document.getElementById('donateError');
+  errorDiv.classList.add('d-none');
+
+  if (!amount || isNaN(amount) || amount < 10) {
+    errorDiv.textContent = "Please enter a valid amount (minimum R10).";
+    errorDiv.classList.remove('d-none');
+    return false;
+  }
+  if (!name) {
+    errorDiv.textContent = "Please enter your name.";
+    errorDiv.classList.remove('d-none');
+    return false;
+  }
+  if (!email) {
+    errorDiv.textContent = "Please enter your email.";
+    errorDiv.classList.remove('d-none');
+    return false;
+  }
+  if (!purpose) {
+    errorDiv.textContent = "Please select a donation purpose.";
+    errorDiv.classList.remove('d-none');
+    return false;
+  }
+
+  // Replace with your PayFast merchant ID
+  const merchantId = 'YOUR_MERCHANT_ID';
+  // Encode parameters for PayFast
+  const itemName = encodeURIComponent(`Donation to African Jewel - ${purpose}`);
+  const customStr = encodeURIComponent(`Donor: ${name}, Email: ${email}`);
+  const url = `https://www.payfast.co.za/eng/process?cmd=_paynow&receiver=${merchantId}&amount=${amount}&item_name=${itemName}&custom_str1=${customStr}`;
+  window.open(url, '_blank');
+  return false;
 }

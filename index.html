@@ -356,8 +356,117 @@
             </div>
           </div>
         </div>
+        <div class="text-center mt-4">
+          <button
+            class="btn btn-primary btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#volunteerModal"
+          >
+            Become a Volunteer
+          </button>
+        </div>
       </div>
     </section>
+
+    <!-- Volunteer Modal -->
+    <div
+      class="modal fade"
+      id="volunteerModal"
+      tabindex="-1"
+      aria-labelledby="volunteerModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="volunteerModalLabel">
+              Volunteer Application
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <form
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            id="volunteerForm"
+          >
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="volName" class="form-label">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="volName"
+                  name="name"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="volEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="volEmail"
+                  name="email"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="volPhone" class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="volPhone"
+                  name="phone"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="volInterest" class="form-label"
+                  >Area of Interest</label
+                >
+                <select
+                  class="form-select"
+                  id="volInterest"
+                  name="interest"
+                  required
+                >
+                  <option value="" disabled selected>Select an area</option>
+                  <option value="Education">Education</option>
+                  <option value="Sports">Sports</option>
+                  <option value="Mentorship">Mentorship</option>
+                  <option value="Community Development">
+                    Community Development
+                  </option>
+                  <option value="Fundraising">Fundraising</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="volMessage" class="form-label"
+                  >Why do you want to volunteer?</label
+                >
+                <textarea
+                  class="form-control"
+                  id="volMessage"
+                  name="message"
+                  rows="3"
+                  required
+                ></textarea>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success w-100">
+                Submit Application
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- <section class="page-section" id="services">
         <div class="container px-4 px-lg-5">
@@ -397,7 +506,7 @@
     </section> -->
     <!-- Portfolio-->
 
-      <!-- Frame 1 -->
+    <!-- Frame 1 -->
     <section id="portfolio">
       <div class="container-fluid p-0">
         <div class="row g-0">
@@ -440,9 +549,7 @@
               />
               <div class="portfolio-box-caption">
                 <div class="project-category text-white-50">Category</div>
-                <div class="project-name">
-                  Boyz n Girlz Empowerment Project (Education/Meals)
-                </div>
+                <div class="project-name">Computer Academy</div>
               </div>
             </div>
           </div>
@@ -466,7 +573,7 @@
               <div class="portfolio-box-caption">
                 <div class="project-category text-white-50">Category</div>
                 <div class="project-name">
-                  Boyz n Girlz Empowerment Project (Education/Meals)
+                  Computer Mobile Classroom (Education)
                 </div>
               </div>
             </div>
@@ -491,12 +598,11 @@
               <div class="portfolio-box-caption">
                 <div class="project-category text-white-50">Category</div>
                 <div class="project-name">
-                  Boyz n Girlz Empowerment Project (Education/Meals)
+                  Dignity & Poise (Education/Hygiene)
                 </div>
               </div>
             </div>
           </div>
-
 
           <!-- frame 5 -->
 
@@ -517,7 +623,7 @@
               <div class="portfolio-box-caption">
                 <div class="project-category text-white-50">Category</div>
                 <div class="project-name">
-                  Boyz n Girlz Empowerment Project (Education/Meals)
+                  Sport Changes Lives (Up-liftment/Community)
                 </div>
               </div>
             </div>
@@ -531,7 +637,7 @@
               data-bs-toggle="modal"
               data-bs-target="#portfolioModal"
               data-title="Boyz n Girlz Empowerment Project (Education/Meals)"
-              data-img="assets/img/portfolio/fullsize/6.jpg"
+              data-img="assets/img/african_jewel_logo.png"
               data-desc="This project empowers boys and girls through education and meal support. Volunteers help with tutoring, meal preparation, and mentorship."
             >
               <img
@@ -542,7 +648,7 @@
               <div class="portfolio-box-caption">
                 <div class="project-category text-white-50">Category</div>
                 <div class="project-name">
-                  Boyz n Girlz Empowerment Project (Education/Meals)
+                  Brazilian Brighter <span>&#128513;</span> (Hygiene/ Education)
                 </div>
               </div>
             </div>
@@ -710,13 +816,19 @@
       </div>
     </section> -->
     <!-- Events & News-->
-    <section class="page-section bg-light" id="events">
+    <section class="page-section bg-dark" id="events">
       <div class="container px-4 px-lg-5">
-        <h2 class="text-center mt-0">Events & News</h2>
+        <h2 class="text-center mt-0" style="color: aliceblue">Events & News</h2>
         <hr class="divider" />
         <p class="text-center text-muted">
           Upcoming events and latest news will be displayed here.
         </p>
+        <!-- news letter -->
+        <!-- Place this inside your #events section -->
+        <div
+          id="didYouKnowFacts"
+          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4"
+        ></div>
       </div>
     </section>
     <!-- Partners-->
@@ -774,11 +886,155 @@
     <section class="page-section bg-dark text-white" id="donate">
       <div class="container px-4 px-lg-5 text-center">
         <h2 class="mb-4">
-          Please! Free to Donate and help us build a better world
+          Please! Feel free to Donate and help us build a better world
         </h2>
-        <a class="btn btn-light btn-xl" href="#">Donate here!</a>
+        <button
+          class="btn btn-light btn-xl"
+          data-bs-toggle="modal"
+          data-bs-target="#donateModal"
+        >
+          Donate here!
+        </button>
       </div>
     </section>
+
+    <!-- Donate Modal -->
+    <div
+      class="modal fade"
+      id="donateModal"
+      tabindex="-1"
+      aria-labelledby="donateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="donateModalLabel">
+              Donate to African Jewel
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="donationForm" onsubmit="return handleDonate(event)">
+              <div class="mb-3">
+                <label class="form-label">Choose your donation amount:</label>
+                <div class="row g-2">
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-sm w-100"
+                      onclick="setAmount(100)"
+                    >
+                      R100
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-sm w-100"
+                      onclick="setAmount(250)"
+                    >
+                      R250
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-sm w-100"
+                      onclick="setAmount(500)"
+                    >
+                      R500
+                    </button>
+                  </div>
+                  <div class="col-3">
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-sm w-100"
+                      onclick="setAmount(1000)"
+                    >
+                      R1000
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="customAmount" class="form-label"
+                  >Or enter a custom amount (R):</label
+                >
+                <input
+                  type="number"
+                  min="10"
+                  class="form-control form-control-sm"
+                  id="customAmount"
+                  name="customAmount"
+                  placeholder="e.g. 200"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="donorName" class="form-label">Your Name:</label>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="donorName"
+                  name="donorName"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="donorEmail" class="form-label">Your Email:</label>
+                <input
+                  type="email"
+                  class="form-control form-control-sm"
+                  id="donorEmail"
+                  name="donorEmail"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="donationPurpose" class="form-label"
+                  >Donation Purpose:</label
+                >
+                <select
+                  class="form-select form-select-sm"
+                  id="donationPurpose"
+                  name="donationPurpose"
+                >
+                  <option value="" disabled selected>Select a project</option>
+                  <option value="Dignity & Poise">Dignity & Poise</option>
+                  <option value="Sport Changes Lives">
+                    Sport Changes Lives
+                  </option>
+                  <option value="Brazilian Brighter Smile">
+                    Brazilian Brighter Smile
+                  </option>
+                  <option value="Computer Mobile Classroom">
+                    Computer Mobile Classroom
+                  </option>
+                  <option value="Computer Academy">Computer Academy</option>
+                  <option value="Boyz n Girlz Empowerment">
+                    Boyz n Girlz Empowerment
+                  </option>
+                </select>
+              </div>
+              <div
+                id="donateError"
+                class="alert alert-danger d-none mb-3"
+              ></div>
+              <button type="submit" class="btn btn-success w-100">
+                Donate via PayFast
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Contact-->
     <section class="page-section" id="contact">
       <div class="container px-4 px-lg-5">
